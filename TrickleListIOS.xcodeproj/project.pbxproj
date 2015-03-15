@@ -15,6 +15,10 @@
 		0EA2FA611AB5D7AD0032DFA4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EA2FA601AB5D7AD0032DFA4 /* Images.xcassets */; };
 		0EA2FA641AB5D7AD0032DFA4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA2FA621AB5D7AD0032DFA4 /* LaunchScreen.xib */; };
 		0EA2FA701AB5D7AD0032DFA4 /* TrickleListIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA2FA6F1AB5D7AD0032DFA4 /* TrickleListIOSTests.m */; };
+		0EA2FA821AB5E5C80032DFA4 /* _Habit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA2FA7B1AB5E5C80032DFA4 /* _Habit.m */; };
+		0EA2FA831AB5E5C80032DFA4 /* _Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA2FA7D1AB5E5C80032DFA4 /* _Status.m */; };
+		0EA2FA841AB5E5C80032DFA4 /* Habit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA2FA7F1AB5E5C80032DFA4 /* Habit.m */; };
+		0EA2FA851AB5E5C80032DFA4 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA2FA811AB5E5C80032DFA4 /* Status.m */; };
 		93BE0AFEDB69442D2740738D /* libPods-TrickleListIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB61DADE9E3ED3302316C8FF /* libPods-TrickleListIOS.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +47,14 @@
 		0EA2FA691AB5D7AD0032DFA4 /* TrickleListIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrickleListIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EA2FA6E1AB5D7AD0032DFA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EA2FA6F1AB5D7AD0032DFA4 /* TrickleListIOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrickleListIOSTests.m; sourceTree = "<group>"; };
+		0EA2FA7A1AB5E5C80032DFA4 /* _Habit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Habit.h; sourceTree = "<group>"; };
+		0EA2FA7B1AB5E5C80032DFA4 /* _Habit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Habit.m; sourceTree = "<group>"; };
+		0EA2FA7C1AB5E5C80032DFA4 /* _Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Status.h; sourceTree = "<group>"; };
+		0EA2FA7D1AB5E5C80032DFA4 /* _Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Status.m; sourceTree = "<group>"; };
+		0EA2FA7E1AB5E5C80032DFA4 /* Habit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Habit.h; sourceTree = "<group>"; };
+		0EA2FA7F1AB5E5C80032DFA4 /* Habit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Habit.m; sourceTree = "<group>"; };
+		0EA2FA801AB5E5C80032DFA4 /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		0EA2FA811AB5E5C80032DFA4 /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		2DB9030B29487B1D7BE875AA /* Pods-TrickleListIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrickleListIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrickleListIOS/Pods-TrickleListIOS.release.xcconfig"; sourceTree = "<group>"; };
 		7E7041DC289D65D37A52CA4F /* Pods-TrickleListIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrickleListIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrickleListIOS/Pods-TrickleListIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		BB61DADE9E3ED3302316C8FF /* libPods-TrickleListIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrickleListIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +102,7 @@
 		0EA2FA4F1AB5D7AD0032DFA4 /* TrickleListIOS */ = {
 			isa = PBXGroup;
 			children = (
+				0EA2FA791AB5E5C80032DFA4 /* CoreData */,
 				0EA2FA541AB5D7AD0032DFA4 /* AppDelegate.h */,
 				0EA2FA551AB5D7AD0032DFA4 /* AppDelegate.m */,
 				0EA2FA5A1AB5D7AD0032DFA4 /* ViewController.h */,
@@ -127,6 +140,21 @@
 				0EA2FA6E1AB5D7AD0032DFA4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0EA2FA791AB5E5C80032DFA4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				0EA2FA7A1AB5E5C80032DFA4 /* _Habit.h */,
+				0EA2FA7B1AB5E5C80032DFA4 /* _Habit.m */,
+				0EA2FA7C1AB5E5C80032DFA4 /* _Status.h */,
+				0EA2FA7D1AB5E5C80032DFA4 /* _Status.m */,
+				0EA2FA7E1AB5E5C80032DFA4 /* Habit.h */,
+				0EA2FA7F1AB5E5C80032DFA4 /* Habit.m */,
+				0EA2FA801AB5E5C80032DFA4 /* Status.h */,
+				0EA2FA811AB5E5C80032DFA4 /* Status.m */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		1278A8C2BB02F9C5A4C7293F /* Frameworks */ = {
@@ -282,9 +310,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EA2FA561AB5D7AD0032DFA4 /* AppDelegate.m in Sources */,
+				0EA2FA831AB5E5C80032DFA4 /* _Status.m in Sources */,
 				0EA2FA591AB5D7AD0032DFA4 /* TrickleListIOS.xcdatamodeld in Sources */,
 				0EA2FA5C1AB5D7AD0032DFA4 /* ViewController.m in Sources */,
+				0EA2FA821AB5E5C80032DFA4 /* _Habit.m in Sources */,
+				0EA2FA841AB5E5C80032DFA4 /* Habit.m in Sources */,
 				0EA2FA531AB5D7AD0032DFA4 /* main.m in Sources */,
+				0EA2FA851AB5E5C80032DFA4 /* Status.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
