@@ -21,6 +21,7 @@
 		0EA2FA851AB5E5C80032DFA4 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA2FA811AB5E5C80032DFA4 /* Status.m */; };
 		0EA2FA881AB5F4440032DFA4 /* HabitListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA2FA871AB5F4440032DFA4 /* HabitListTableViewController.m */; };
 		0EA2FA8B1AB5F6150032DFA4 /* HabitAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA2FA8A1AB5F6150032DFA4 /* HabitAddViewController.m */; };
+		0EA2FA8E1AB6B82B0032DFA4 /* StatusListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA2FA8D1AB6B82B0032DFA4 /* StatusListTableViewController.m */; };
 		93BE0AFEDB69442D2740738D /* libPods-TrickleListIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB61DADE9E3ED3302316C8FF /* libPods-TrickleListIOS.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,8 @@
 		0EA2FA871AB5F4440032DFA4 /* HabitListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HabitListTableViewController.m; sourceTree = "<group>"; };
 		0EA2FA891AB5F6150032DFA4 /* HabitAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HabitAddViewController.h; sourceTree = "<group>"; };
 		0EA2FA8A1AB5F6150032DFA4 /* HabitAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HabitAddViewController.m; sourceTree = "<group>"; };
+		0EA2FA8C1AB6B82B0032DFA4 /* StatusListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusListTableViewController.h; sourceTree = "<group>"; };
+		0EA2FA8D1AB6B82B0032DFA4 /* StatusListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusListTableViewController.m; sourceTree = "<group>"; };
 		2DB9030B29487B1D7BE875AA /* Pods-TrickleListIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrickleListIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrickleListIOS/Pods-TrickleListIOS.release.xcconfig"; sourceTree = "<group>"; };
 		7E7041DC289D65D37A52CA4F /* Pods-TrickleListIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrickleListIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrickleListIOS/Pods-TrickleListIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		BB61DADE9E3ED3302316C8FF /* libPods-TrickleListIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrickleListIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +125,8 @@
 				0EA2FA871AB5F4440032DFA4 /* HabitListTableViewController.m */,
 				0EA2FA891AB5F6150032DFA4 /* HabitAddViewController.h */,
 				0EA2FA8A1AB5F6150032DFA4 /* HabitAddViewController.m */,
+				0EA2FA8C1AB6B82B0032DFA4 /* StatusListTableViewController.h */,
+				0EA2FA8D1AB6B82B0032DFA4 /* StatusListTableViewController.m */,
 			);
 			path = TrickleListIOS;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 				0EA2FA881AB5F4440032DFA4 /* HabitListTableViewController.m in Sources */,
 				0EA2FA5C1AB5D7AD0032DFA4 /* ViewController.m in Sources */,
 				0EA2FA821AB5E5C80032DFA4 /* _Habit.m in Sources */,
+				0EA2FA8E1AB6B82B0032DFA4 /* StatusListTableViewController.m in Sources */,
 				0EA2FA841AB5E5C80032DFA4 /* Habit.m in Sources */,
 				0EA2FA531AB5D7AD0032DFA4 /* main.m in Sources */,
 				0EA2FA851AB5E5C80032DFA4 /* Status.m in Sources */,

@@ -10,6 +10,7 @@
 #import <MagicalRecord.h>
 #import <CoreData+MagicalRecord.h>
 #import "HabitAddViewController.h"
+#import "StatusListTableViewController.h"
 #import "Habit.h"
 #import "Status.h"
 
