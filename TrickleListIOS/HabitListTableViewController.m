@@ -10,7 +10,7 @@
 
 @interface HabitListTableViewController ()
 
-@property NSArray* habits;
+@property NSMutableArray* habits;
 @property NSMutableArray* statuses;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
@@ -38,12 +38,14 @@
 
 - (void)updateHabits {
     _habits = nil;
+    _statuses = nil;
     [self loadHabits];
 }
 
 - (void)loadHabits {
     if (_habits == nil) {
-        _habits = [Habit MR_findAll];
+        NSArray* array = [Habit MR_findAll];
+        _habits = [NSMutableArray arrayWithArray:array];
         _statuses = [NSMutableArray arrayWithCapacity:[_habits count]];
         NSDate* fromDate = [self getToday];
         NSDate* toDate = [fromDate dateByAddingTimeInterval:60*60*24];
@@ -63,25 +65,27 @@
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    NSLog(@"== CALL setEditing ==");
     [super setEditing:editing animated:animated];
     [self.tableView setEditing:editing animated:animated];
 }
 
 #pragma mark - Table view data source
 
+// セクション数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
+// セル数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [_habits count];
 }
 
+// セルの生成
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self loadHabits];
@@ -96,12 +100,14 @@
     return cell;
 }
 
+// セルの詳細ボタン押下
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     StatusListTableViewController* viewController = [[StatusListTableViewController alloc]init];
     viewController.habit = [_habits objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+// セルの選択
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     Status* status = [_statuses objectAtIndex:indexPath.row];
@@ -111,10 +117,26 @@
         newStatus.creationDate = [NSDate date];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
         cell.backgroundColor = [HabitListTableViewController selectedColor];
+        [_statuses replaceObjectAtIndex:indexPath.row withObject:newStatus];
     } else {
+        [_statuses replaceObjectAtIndex:indexPath.row withObject:[NSNull null]];
         [status MR_deleteEntity];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
         cell.backgroundColor = [HabitListTableViewController unselectedColor];
+    }
+}
+
+// セルの削除
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Habit* habit = [_habits objectAtIndex:indexPath.row];
+        [habit MR_deleteEntity];
+        [_habits removeObjectAtIndex:indexPath.row];
+        [_statuses removeObjectAtIndex:indexPath.row];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        NSLog(@"== == == == == == == == == == delete finish == == == == == == == == == == ");
+        //[self updateHabits];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:YES];
     }
 }
 

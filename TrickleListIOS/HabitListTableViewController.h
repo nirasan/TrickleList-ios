@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#define MR_ENABLE_ACTIVE_RECORD_LOGGING 1
 #import <MagicalRecord.h>
+#import <MagicalRecord+Options.h>
 #import <CoreData+MagicalRecord.h>
 #import "HabitAddViewController.h"
 #import "StatusListTableViewController.h"

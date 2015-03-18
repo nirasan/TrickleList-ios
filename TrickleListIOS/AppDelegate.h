@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#define MR_ENABLE_ACTIVE_RECORD_LOGGING 1
+
 #import <MagicalRecord.h>
 #import <MagicalRecord+Setup.h>
 
