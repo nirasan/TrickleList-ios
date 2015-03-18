@@ -35,6 +35,7 @@
     if (_textField.text.length > 0) {
         _habit = [Habit MR_createEntity];
         _habit.name = _textField.text;
+        _habit.creationDate = [NSDate date];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     }
 }

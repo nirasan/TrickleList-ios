@@ -11,6 +11,7 @@
 @interface HabitListTableViewController ()
 
 @property NSArray* habits;
+@property NSMutableArray* statuses;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
@@ -43,9 +44,22 @@
 - (void)loadHabits {
     if (_habits == nil) {
         _habits = [Habit MR_findAll];
-        
-        [Habit MR_findAll]
+        _statuses = [NSMutableArray arrayWithCapacity:[_habits count]];
+        NSDate* fromDate = [self getToday];
+        NSDate* toDate = [fromDate dateByAddingTimeInterval:60*60*24];
+        for (Habit* h in _habits) {
+            NSPredicate* p = [NSPredicate predicateWithFormat:@"(self IN %@) AND (creationDate >= %@) AND (creationDate < %@)", h.statuses, fromDate, toDate];
+            Status* status = [Status MR_findFirstWithPredicate:p];
+            [_statuses addObject:(status == nil ? [NSNull null] : status)];
+        }
     }
+}
+
+- (NSDate*)getToday {
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    NSDateComponents* components = [calendar components:flags fromDate:[NSDate date]];
+    return [calendar dateFromComponents:components];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -70,12 +84,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
     [self loadHabits];
     static NSString *CellIdentifier = @"ListPrototypeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     Habit* habit = [_habits objectAtIndex:indexPath.row];
     cell.textLabel.text = habit.name;
+    Status* status = [_statuses objectAtIndex:indexPath.row];
+    if (status != [NSNull null]) {
+        cell.backgroundColor = [HabitListTableViewController selectedColor];
+    }
     return cell;
 }
 
@@ -87,13 +104,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIColor* color = cell.backgroundColor;
-    UIColor* selectedColor = [UIColor colorWithRed:0.529 green:0.809 blue:0.922 alpha:1.0];
-    NSLog(@"== background color is %@", color);
-    if (color == [UIColor clearColor]) {
-        cell.backgroundColor = selectedColor;
+    Status* status = [_statuses objectAtIndex:indexPath.row];
+    if (status == [NSNull null]) {
+        Status* newStatus = [Status MR_createEntity];
+        newStatus.habit = [_habits objectAtIndex:indexPath.row];
+        newStatus.creationDate = [NSDate date];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        cell.backgroundColor = [HabitListTableViewController selectedColor];
     } else {
-        cell.backgroundColor = [UIColor clearColor];
+        [status MR_deleteEntity];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        cell.backgroundColor = [HabitListTableViewController unselectedColor];
     }
 }
 
@@ -148,6 +169,14 @@
 - (IBAction)unwindDoneSegue:(UIStoryboardSegue *)segue {
     [self updateHabits];
     [self.tableView reloadData];
+}
+
+#pragma mark - const
++ (UIColor*)selectedColor {
+    return [UIColor colorWithRed:0.529 green:0.809 blue:0.922 alpha:1.0];
+}
++ (UIColor*)unselectedColor {
+    return [UIColor clearColor];
 }
 
 @end
